@@ -67,11 +67,21 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 # install strace, ltrace
 RUN apt install -y strace ltrace
 
+# binary exploitation stuff
+# pwndbg
+RUN git clone https://github.com/pwndbg/pwndbg $HOME/pwndbg && cd $HOME/pwndbg && ./setup.sh
+
+# r2
+RUN git clone https://github.com/radareorg/radare2 $HOME/radare2 && cd $HOME/radare2 && sys/install.sh
+
 # enable oh-my-zsh
 RUN sh -c "echo '\n# enable oh-my-zsh\nsource \$ZSH/oh-my-zsh.sh\n' >> ~/.zshrc"
 
 # add .local/bin to path
 RUN sh -c "echo '\n# add .local/bin to path\nexport PATH=~/.local/bin:\$PATH\n' >> ~/.zshrc"
+
+# change workdir
+WORKDIR ~
 
 # override entrypoint
 ENTRYPOINT ["zsh"]
