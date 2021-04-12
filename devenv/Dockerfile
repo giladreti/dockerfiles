@@ -51,6 +51,12 @@ RUN ~/.cargo/bin/cargo install broot
 # install exa
 RUN ~/.cargo/bin/cargo install exa
 
+# install python
+RUN apt install -y python python-pip python3 python3-pip
+
+# install ipython, ipdb
+RUN pip3 install ipython ipdb
+
 # enable oh-my-zsh
 RUN sh -c "echo '\n# enable oh-my-zsh\nsource \$ZSH/oh-my-zsh.sh\n' >> ~/.zshrc"
 
