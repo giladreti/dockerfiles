@@ -1,9 +1,13 @@
 FROM ubuntu:20.10
 
+# change workdir
+WORKDIR ~
+
+# update existing packages
 RUN apt update && apt upgrade -y
 
 # install essential tools
-RUN apt install -y git curl wget vim
+RUN apt install -y git curl wget neovim
 
 # install zsh
 RUN apt install -y zsh && chsh -s $(which zsh) && touch ~/.zshrc
@@ -69,19 +73,16 @@ RUN apt install -y strace ltrace
 
 # binary exploitation stuff
 # pwndbg
-RUN git clone https://github.com/pwndbg/pwndbg $HOME/pwndbg && cd $HOME/pwndbg && ./setup.sh
+RUN git clone https://github.com/pwndbg/pwndbg && cd pwndbg && ./setup.sh
 
 # r2
-RUN git clone https://github.com/radareorg/radare2 $HOME/radare2 && cd $HOME/radare2 && sys/install.sh
+RUN git clone https://github.com/radareorg/radare2 && cd radare2 && sys/install.sh
 
 # enable oh-my-zsh
 RUN sh -c "echo '\n# enable oh-my-zsh\nsource \$ZSH/oh-my-zsh.sh\n' >> ~/.zshrc"
 
 # add .local/bin to path
 RUN sh -c "echo '\n# add .local/bin to path\nexport PATH=~/.local/bin:\$PATH\n' >> ~/.zshrc"
-
-# change workdir
-WORKDIR ~
 
 # override entrypoint
 ENTRYPOINT ["zsh"]
