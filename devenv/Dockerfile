@@ -43,13 +43,17 @@ RUN apt install -y build-essential cmake clang gdb
 
 # install bat
 RUN apt install -y bat
-RUN mkdir -p ~/.local/bin && ln -s /usr/bin/batcat ~/.local/bin/bat
+RUN mkdir -p ~/.local/bin && ln -s $(which batcat) ~/.local/bin/bat
 
 # install broot
 RUN ~/.cargo/bin/cargo install broot
 
 # install exa
 RUN ~/.cargo/bin/cargo install exa
+
+# install fd
+RUN apt install -y fd-find
+RUN mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd
 
 # install python
 RUN apt install -y python python-pip python3 python3-pip
