@@ -3,6 +3,9 @@ FROM ubuntu:20.10
 # change workdir
 WORKDIR ~
 
+# unminimize
+RUN yes | unminimize
+
 # update existing packages
 RUN apt update && apt upgrade -y
 
