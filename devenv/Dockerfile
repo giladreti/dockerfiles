@@ -64,6 +64,9 @@ RUN pip3 install ipython ipdb
 # install poetry
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
+# install strace, ltrace
+RUN apt install -y strace ltrace
+
 # enable oh-my-zsh
 RUN sh -c "echo '\n# enable oh-my-zsh\nsource \$ZSH/oh-my-zsh.sh\n' >> ~/.zshrc"
 
