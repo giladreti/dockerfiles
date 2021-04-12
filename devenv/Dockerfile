@@ -7,7 +7,7 @@ WORKDIR ~
 RUN apt update && apt upgrade -y
 
 # install essential tools
-RUN apt install -y git curl wget neovim
+RUN apt install -y git curl wget neovim sudo
 
 # install zsh
 RUN apt install -y zsh && chsh -s $(which zsh) && touch ~/.zshrc
