@@ -38,6 +38,9 @@ RUN sh -c "echo '\n# add fzf plugin\nplugins+=(fzf)\n' >> ~/.zshrc"
 # install rust
 RUN curl https://sh.rustup.rs -sSf | sh -s - -y
 
+# install c toolchain
+RUN apt install -y build-essential cmake clang gdb
+
 # install bat
 RUN apt install -y bat
 RUN mkdir -p ~/.local/bin && ln -s /usr/bin/batcat ~/.local/bin/bat
