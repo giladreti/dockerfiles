@@ -56,10 +56,13 @@ RUN apt install -y fd-find
 RUN mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd
 
 # install python
-RUN apt install -y python python-pip python3 python3-pip
+RUN apt install -y python python-pip python3 python3-pip python-is-python3
 
 # install ipython, ipdb
 RUN pip3 install ipython ipdb
+
+# install poetry
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 # enable oh-my-zsh
 RUN sh -c "echo '\n# enable oh-my-zsh\nsource \$ZSH/oh-my-zsh.sh\n' >> ~/.zshrc"
