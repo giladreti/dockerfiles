@@ -78,6 +78,9 @@ RUN git clone https://github.com/pwndbg/pwndbg && cd pwndbg && ./setup.sh
 # r2
 RUN git clone https://github.com/radareorg/radare2 && cd radare2 && sys/install.sh
 
+# pwntools
+RUN pip3 install pwntools
+
 # enable oh-my-zsh
 RUN sh -c "echo '\n# enable oh-my-zsh\nsource \$ZSH/oh-my-zsh.sh\n' >> ~/.zshrc"
 
