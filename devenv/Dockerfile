@@ -63,7 +63,7 @@ RUN apt install -y fd-find
 RUN mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd
 
 # install python
-RUN apt install -y python python-pip python3 python3-pip python-is-python3
+RUN apt install -y python3 python3-pip python-is-python3
 
 # install ipython, ipdb
 RUN pip3 install ipython ipdb
