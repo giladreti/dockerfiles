@@ -3,11 +3,16 @@ FROM ubuntu:20.10
 # change workdir
 WORKDIR /root`
 
-# unminimize
-RUN yes | unminimize
-
 # update existing packages
 RUN apt update && apt upgrade -y
+
+# add locals
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
+
+# unminimize
+RUN yes | unminimize
 
 # install essential tools
 RUN apt install -y git curl wget neovim sudo
@@ -21,7 +26,6 @@ RUN sh -c "echo 'export ZSH=$HOME/.oh-my-zsh\n\nplugins=()\n' >> ~/.zshrc"
 
 # install spaceship prompt
 RUN curl -fsSL https://starship.rs/install.sh | bash -s - --yes
-
 RUN sh -c "echo '\n# enable spaceship prompt\neval \"\$(starship init zsh)\"\n' >> ~/.zshrc"
 
 # add oh-my-zsh plugins
@@ -39,7 +43,6 @@ RUN sh -c "echo '\n# add z plugin\nplugins+=(z)\n' >> ~/.zshrc"
 
 # install fzf
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-
 RUN sh -c "echo '\n# add fzf plugin\nplugins+=(fzf)\n' >> ~/.zshrc"
 
 # install rust
