@@ -1,18 +1,10 @@
 # initialize omz
 export ZSH=/root/.oh-my-zsh
-plugins=()
+
+plugins=(colored-man-pages sudo z zsh-autosuggestions)
 
 # enable spaceship prompt
 eval "$(starship init zsh)"
-
-# add autosuggestions plugin
-plugins+=(zsh-autosuggestions)
-
-# add various plugins
-plugins+=(colored-man-pages sudo)
-
-# add z plugin
-plugins+=(z)
 
 # add fzf plugin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
