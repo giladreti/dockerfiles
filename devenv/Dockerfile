@@ -1,7 +1,7 @@
 FROM ubuntu:20.10
 
 # change workdir
-WORKDIR /root`
+WORKDIR /root
 
 # update existing packages
 RUN apt update && apt upgrade -y
@@ -38,7 +38,7 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/ins
 
 # install rust
 RUN curl https://sh.rustup.rs -sSf | sh -s - -y
-ENV PATH "~/.cargo/bin:${PATH}"
+ENV PATH "${HOME}/.cargo/bin:${PATH}"
 
 # install c toolchain
 RUN apt install -y build-essential cmake clang gdb
@@ -84,3 +84,4 @@ COPY .zshrc /root/.zshrc
 
 # override entrypoint
 ENTRYPOINT ["zsh"]
+
