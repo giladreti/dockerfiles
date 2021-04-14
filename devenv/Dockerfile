@@ -79,6 +79,9 @@ RUN git clone https://github.com/radareorg/radare2 && cd radare2 && sys/install.
 # pwntools
 RUN pip3 install pwntools
 
+# install man-db
+RUN apt install -y man-db
+
 # copy .zshrc
 COPY .zshrc /root/.zshrc
 
