@@ -40,6 +40,7 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/ins
 
 # install rust
 RUN curl https://sh.rustup.rs -sSf | sh -s - -y
+ENV PATH "~/.cargo/bin:${PATH}"
 
 # install c toolchain
 RUN apt install -y build-essential cmake clang gdb
@@ -49,10 +50,10 @@ RUN apt install -y bat
 RUN mkdir -p ~/.local/bin && ln -s $(which batcat) ~/.local/bin/bat
 
 # install broot
-RUN ~/.cargo/bin/cargo install broot
+RUN cargo install broot && broot --install
 
 # install exa
-RUN ~/.cargo/bin/cargo install exa
+RUN cargo install exa
 
 # install fd
 RUN apt install -y fd-find
