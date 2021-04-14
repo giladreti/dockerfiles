@@ -26,16 +26,14 @@ RUN curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | 
 # install spaceship prompt
 RUN curl -fsSL https://starship.rs/install.sh | bash -s - --yes
 
-# add oh-my-zsh plugins
+# install oh-my-zsh plugins
 # autosuggestions
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-# enable various plugins
-
-# install z
+# z
 RUN wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/.z
 
-# install fzf
+# fzf
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 
 # install rust
