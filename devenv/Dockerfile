@@ -38,7 +38,7 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/ins
 
 # install rust
 RUN curl https://sh.rustup.rs -sSf | sh -s - -y
-ENV PATH "${HOME}/.cargo/bin:${PATH}"
+ENV PATH "/root/.cargo/bin:${PATH}"
 
 # install c toolchain
 RUN apt install -y build-essential cmake clang gdb
