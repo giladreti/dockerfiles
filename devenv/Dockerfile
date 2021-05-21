@@ -61,8 +61,8 @@ RUN mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd
 # install python
 RUN apt install -y python3 python3-pip python-is-python3
 
-# install ipython, ipdb
-RUN pip3 install ipython ipdb
+# install ipython, ipdb, ptipython
+RUN pip3 install ipython ipdb ptipython
 
 # install poetry
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
