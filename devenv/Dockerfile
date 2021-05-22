@@ -83,6 +83,9 @@ RUN pip3 install pwntools
 # install man-db
 RUN apt install -y man-db
 
+# install tmux
+RUN apt install -y tmux
+
 # copy .zshrc
 COPY .zshrc /root/.zshrc
 
