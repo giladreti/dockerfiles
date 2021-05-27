@@ -92,6 +92,16 @@ RUN apt install -y software-properties-common
 # install neovim
 RUN apt-add-repository -y ppa:neovim-ppa/unstable && apt-get update && apt-get install -y neovim
 
+# install python venv
+RUN apt install -y python3-venv
+
+# install nvim plugins
+RUN mkdir -p ~/.config &&\
+	git clone git://github.com/rafi/vim-config.git ~/.config/nvim &&\
+	cd ~/.config/nvim &&\
+	ln -s ~/.config/nvim ~/.vim &&\
+	./venv.sh && make test && make
+
 # copy .zshrc, .p10k.zsh
 COPY .zshrc /root/.zshrc
 COPY .p10k.zsh /root/.p10k.zsh
