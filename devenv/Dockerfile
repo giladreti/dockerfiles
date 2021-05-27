@@ -16,16 +16,13 @@ ENV LANGUAGE en_US.UTF-8
 RUN yes | unminimize
 
 # install essential tools
-RUN apt install -y git curl wget neovim sudo
+RUN apt install -y git curl wget sudo
 
 # install zsh
 RUN apt install -y zsh && chsh -s $(which zsh) && touch ~/.zshrc
 
 # install oh-my-zsh
 RUN curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash -s - --keep-zshrc
-
-# install spaceship prompt
-RUN curl -fsSL https://starship.rs/install.sh | bash -s - --yes
 
 # install oh-my-zsh plugins
 # autosuggestions
@@ -86,8 +83,18 @@ RUN apt install -y man-db
 # install tmux
 RUN apt install -y tmux
 
-# copy .zshrc
+# install p10k
+RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# install software-properties-common
+RUN apt install -y software-properties-common
+
+# install neovim
+RUN apt-add-repository -y ppa:neovim-ppa/unstable && apt-get update && apt-get install -y neovim
+
+# copy .zshrc, .p10k.zsh
 COPY .zshrc /root/.zshrc
+COPY .p10k.zsh /root/.p10k.zsh
 
 # override entrypoint
 ENTRYPOINT ["zsh"]
