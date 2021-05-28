@@ -23,6 +23,9 @@ source $ZSH/oh-my-zsh.sh
 # add .local/bin to path
 export PATH=~/.local/bin:$PATH
 
+# add go to path
+export PATH=$HOME/go/bin:$PATH
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

@@ -107,6 +107,30 @@ RUN cd && git clone https://github.com/gpakosz/.tmux.git &&\
 	ln -s -f .tmux/.tmux.conf &&\
 	cp .tmux/.tmux.conf.local .
 
+# install rip
+RUN cargo install rm-improved
+
+# install ripgrep
+RUN apt install -y ripgrep
+
+# install delta
+RUN cargo install git-delta
+
+# install hexyl, xxd
+RUN apt install -y hexyl xxd
+
+#install jq
+RUN apt install -y jq
+
+# install go
+RUN rm -rf /usr/local/go &&\
+	wget https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O /tmp/go1.16.4.linux-amd64.tar.gz &&\
+	tar -C /usr/local -xzf /tmp/go1.16.4.linux-amd64.tar.gz
+ENV PATH "${PATH}:/usr/local/go/bin"
+
+# install yq
+RUN GO111MODULE=on go get github.com/mikefarah/yq/v4
+
 # copy .zshrc, .p10k.zsh
 COPY .zshrc /root/.zshrc
 COPY .p10k.zsh /root/.p10k.zsh
