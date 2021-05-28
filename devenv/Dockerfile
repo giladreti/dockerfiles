@@ -102,6 +102,11 @@ RUN mkdir -p ~/.config &&\
 	ln -s ~/.config/nvim ~/.vim &&\
 	./venv.sh && make test && make
 
+# install tmux config
+RUN cd && git clone https://github.com/gpakosz/.tmux.git &&\
+	ln -s -f .tmux/.tmux.conf &&\
+	cp .tmux/.tmux.conf.local .
+
 # copy .zshrc, .p10k.zsh
 COPY .zshrc /root/.zshrc
 COPY .p10k.zsh /root/.p10k.zsh
