@@ -130,6 +130,9 @@ ENV PATH "${PATH}:/usr/local/go/bin"
 # yq
 RUN GO111MODULE=on go get github.com/mikefarah/yq/v4
 
+# dust
+RUN cargo install du-dust
+
 # copy .zshrc, .p10k.zsh
 COPY .zshrc /root/.zshrc
 COPY .p10k.zsh /root/.p10k.zsh
