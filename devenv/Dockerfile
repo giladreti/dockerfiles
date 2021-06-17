@@ -45,7 +45,7 @@ RUN apt install -y bat
 RUN mkdir -p ~/.local/bin && ln -s $(which batcat) ~/.local/bin/bat
 
 # broot
-RUN cargo install broot && broot --install
+RUN cargo install broot
 
 # exa
 RUN cargo install exa

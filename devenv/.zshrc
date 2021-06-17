@@ -29,6 +29,9 @@ export PATH=$HOME/go/bin:$PATH
 # enable zoxide
 eval "$(zoxide init zsh)"
 
+# enable broot
+source /root/.config/broot/launcher/bash/br
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
