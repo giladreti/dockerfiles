@@ -8,7 +8,7 @@ fi
 # initialize omz
 export ZSH=/root/.oh-my-zsh
 
-plugins=(colored-man-pages sudo z zsh-autosuggestions)
+plugins=(colored-man-pages sudo zsh-autosuggestions)
 
 # choose powerlevel10k theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -26,8 +26,12 @@ export PATH=~/.local/bin:$PATH
 # add go to path
 export PATH=$HOME/go/bin:$PATH
 
+# enable zoxide
+eval "$(zoxide init zsh)"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # choose nvim as a default editor
 export EDITOR=`which nvim`
+
