@@ -135,5 +135,5 @@ COPY .zshrc /root/.zshrc
 COPY .p10k.zsh /root/.p10k.zsh
 
 # override entrypoint
-ENTRYPOINT ["zsh"]
+ENTRYPOINT ["tmux", "-2"]
 
