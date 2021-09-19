@@ -95,11 +95,8 @@ RUN apt-add-repository -y ppa:neovim-ppa/unstable && apt-get update && apt-get i
 RUN apt install -y python3-venv
 
 # nvim plugins
-RUN mkdir -p ~/.config &&\
-	git clone git://github.com/rafi/vim-config.git ~/.config/nvim &&\
-	cd ~/.config/nvim &&\
-	ln -s ~/.config/nvim ~/.vim &&\
-	./venv.sh && make test && make
+RUN git clone https://github.com/NvChad/NvChad ~/.config/nvim &&\
+	nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
 
 # tmux config
 RUN cd && git clone https://github.com/gpakosz/.tmux.git &&\
