@@ -38,7 +38,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s - -y
 ENV PATH "/root/.cargo/bin:${PATH}"
 
 # c toolchain
-RUN apt install -y build-essential cmake clang gdb
+RUN DEBIAN_FRONTEND="noninteractive" apt install -y build-essential cmake clang gdb
 
 # bat
 RUN apt install -y bat
@@ -95,8 +95,8 @@ RUN apt-add-repository -y ppa:neovim-ppa/unstable && apt-get update && apt-get i
 RUN apt install -y python3-venv
 
 # nvim plugins
-RUN git clone https://github.com/NvChad/NvChad ~/.config/nvim &&\
-	nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+RUN	git clone https://github.com/NvChad/NvChad ~/.config/nvim &&\
+	nvim --headless -c ":silent! autocmd User PackerComplete quitall" -c ":silent! PackerSync"
 
 # tmux config
 RUN cd && git clone https://github.com/gpakosz/.tmux.git &&\
