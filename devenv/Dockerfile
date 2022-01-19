@@ -1,4 +1,4 @@
-FROM ubuntu:21.04
+FROM ubuntu:21.10
 
 # change workdir
 WORKDIR /root
@@ -39,6 +39,9 @@ ENV PATH "/root/.cargo/bin:${PATH}"
 
 # c toolchain
 RUN DEBIAN_FRONTEND="noninteractive" apt install -y build-essential cmake clang gdb
+
+# nc
+RUN DEBIAN_FRONTEND="noninteractive" apt install -y netcat
 
 # bat
 RUN apt install -y bat
@@ -129,6 +132,9 @@ RUN GO111MODULE=on go get github.com/mikefarah/yq/v4
 
 # dust
 RUN cargo install du-dust
+
+# locate
+RUN apt install -y locate
 
 # copy .zshrc, .p10k.zsh
 COPY .zshrc /root/.zshrc
