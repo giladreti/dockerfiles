@@ -133,8 +133,14 @@ RUN GO111MODULE=on go get github.com/mikefarah/yq/v4
 # dust
 RUN cargo install du-dust
 
-# locate
-RUN apt install -y locate
+# locate, file
+RUN apt install -y locate file
+
+# gdbserver
+RUN apt install -y gdbserver
+
+# libssl
+RUN apt install -y libssl-dev libssl-doc
 
 # copy .zshrc, .p10k.zsh
 COPY .zshrc /root/.zshrc
